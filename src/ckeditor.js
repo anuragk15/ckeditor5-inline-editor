@@ -55,7 +55,7 @@ import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 
-class Editor extends InlineEditor {}
+class Editor extends InlineEditor { }
 // Plugins to include in the build.
 Editor.builtinPlugins = [
 	Alignment,
@@ -113,7 +113,7 @@ Editor.builtinPlugins = [
 
 // Editor configuration.
 Editor.defaultConfig = {
-	
+
 	toolbar: {
 		items: [
 			'heading',
@@ -160,6 +160,23 @@ Editor.defaultConfig = {
 			'imageStyle:block',
 			'imageStyle:side'
 		]
+	},
+	mediaEmbed: {
+		previewsInData: true,
+	},
+	htmlEmbed: {
+		showPreviews: true,
+		sanitizeHtml: (inputHtml) => {
+			// Strip unsafe elements and attributes, e.g.:
+			// the `<script>` elements and `on*` attributes.
+			const outputHtml = sanitize(inputHtml);
+
+			return {
+				html: outputHtml,
+				// true or false depending on whether the sanitizer stripped anything.
+				hasChanged: true
+			};
+		}
 	},
 	table: {
 		contentToolbar: [
