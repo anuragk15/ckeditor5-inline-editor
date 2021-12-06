@@ -161,9 +161,7 @@ Editor.defaultConfig = {
 			'imageStyle:side'
 		]
 	},
-	mediaEmbed: {
-		previewsInData: true,
-	},
+	
 	htmlEmbed: {
 		showPreviews: true,
 		sanitizeHtml: (inputHtml) => {
@@ -177,6 +175,9 @@ Editor.defaultConfig = {
 				hasChanged: true
 			};
 		}
+	},
+	mediaEmbed: {
+		previewsInData: true,
 	},
 	table: {
 		contentToolbar: [
